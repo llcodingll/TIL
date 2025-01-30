@@ -38,8 +38,8 @@ e.g.) 자동차 - A라는 이름의 자동차의 좋은 엔진을 B라는 디자
 - Overloading: 이름은 같지만 파라미터가 다른 메소드
 - Overriding: 상속을 받아 메소드 재정의
 ---
-### 접근 제어자
-1. public
-2. private
-3. protected
-4. default
+### 접근 제어자(Access Modifier)
+1. public: 어디서나 접근 가능
+2. private: `클래스`내에서만 접근 가능
+3. protected: `상속 받은 클래스`이거나 `동일 패키지`내에서만 접근 가능
+4. default: 접근 제어자를 부여하지 않은 경우의 기본, `동일 패키지`내에서만 접근 가능
