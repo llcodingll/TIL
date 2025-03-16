@@ -128,3 +128,8 @@ static void threeSort(int[] arr, int front, int mid, int rear){
    - 위의 과정으로 이미 정렬 완료 = partition() 수행 X
 2. 부분 배열이 4개 이상 값
    - 중간값에 해당하는 정렬된 mid가 pivot이 되어 partition() 수행
+
+---
+### 시간 복잡도
+평균: O(NlogN)
+최악의 경우: O(N^2)
