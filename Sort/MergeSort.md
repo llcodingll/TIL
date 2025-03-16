@@ -78,3 +78,7 @@ public class Main{
     }
 }
 ```
+
+---
+### 시간 복잡도
+평균/최악의 경우: O(NlogN)
