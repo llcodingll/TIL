@@ -20,6 +20,7 @@
 1. Client 요청 생성
 2. WAS가 cookie 생성, HTTP Header에 cookie 넣어 응답
 3. Client의 cookie 저장, 해당 서버에 요청할 때 요청과 함께 cookie 전송
+   - (client에 저장하기 때문에)공유 pc의 경우 보안 취약
 4. cookie는 브라우저가 종료되어도 저장된 상태 -> 만료 기간 전까지 동일 사이트 재방문 해 요청 시, 필요에 따라 cookie 재전송 됨
 ---
 ### Cookie 메서드
