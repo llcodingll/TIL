@@ -4,6 +4,62 @@
 : JSP 내에서 데이터를 다룰 때, 사용되는 scripting language
 - `<% %>` 보다 속성값을 쉽게 출력 하기 위함 ⇒ `${}`
 - `${}`: 변수, 속성, 메서드 호출 등 포함 O
+---
+## JavaBeans
+
+
+: Java로 작성된 재사용 가능한 SW Component
+### 특징
+- 클래스 직렬화
+- 기본 생성자 필수
+- 속성: getter, setter를 사용해 접근 가능해야 함
+- 필요한 이벤트 처리 메서드들을 포함해야 함
+- EL 표현식을 통해 접근 가능
+  - .(dot) / ["속성명"] 사용
+  - instance만을 작성하면 .toString() 메서드 동작
+```java
+//javaBeans
+public class Person implements Serializable {
+    //객체 직렬화
+    private static final long serialVersionUID = 1L; //임시로 1L로 설정
+    //작성하는 이유: UID -> 변하지 않는 id를 부여해 person이라는 걸 내가 가지고 있는지 확인
+    //따라서 기존 거에서 조금 달라지면 다른 버전이 되니 거기에 맞는 번호를 부여함
+    //캡슐화를 위한 private 설정
+}
+
+---
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+<%@ page import="dto.Person" %>
+	<%
+Person p = new Person();
+		p.setName("user1");
+		p.setAge(20);
+		p.setHobbies(new String[]{"영화보기", "전시관람"});
+        out.print(p);
+		
+		pageContext.setAttribute("p", p);
+	%>
+
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JavaBean</title>
+</head>
+<body>
+	<h2>JavaBeans</h2>
+<div>전체 정보 : ${p}</div>
+	<div>이름 : ${p.name}</div>
+	<div>나이 : ${p["age"]}</div>
+	<div>취미 : ${p["hobbies"][0]}</div>
+</body>
+</html>
+```
+---
 
 ```java
 <%@ page language="java" contentType="text/html; charset=UTF-8"
