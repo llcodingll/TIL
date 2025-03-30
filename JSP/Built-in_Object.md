@@ -30,3 +30,22 @@
 </body>
 </html>
 ```
+---
+### JSP 기본 태그 종류
+| 문법              | 이름                   | 용도 및 실행 위치                          | 예시                                      |
+|-----------------|----------------------|-------------------------------------|-----------------------------------------|
+| `<% ... %>`     | **스크립틀릿(scriptlet)** | JSP 내부에서 **자바 코드 실행**               | `<% int x = 10; %>`                     |
+| `<%= ... %>`    | **표현식(expression)**  | **출력용**: 값을 화면에 출력                  | `<%= user.getName() %>` → HTML에 그대로 출력됨 |
+| `<%! ... %>`    | **선언(declaration)**  | 클래스의 **멤버 변수, 메서드 정의**              | `<%! int count = 0; %>`                 |
+| `<%-- ... --%>` | **주석(comment)**      | JSP 주석. **컴파일되지 않음** → 클라이언트에게 안 보임 | `<%-- 이건 주석입니다 --%>`                    |
+| `<%@ ... %>`    | **지시자(directive)**   | JSP 페이지의 **메타정보 설정**                | `<%@ page import="java.util.*" %>`      |
+---
+### JSP 내장 객체 Scope (4가지)
+| Scope | 생존 범위 | 주요 메서드 |
+| --- | --- | --- |
+| **page** | 해당 JSP 페이지 내 | `pageContext.setAttribute()` |
+| **request** | 하나의 요청(Request Dispatcher 포함) | `request.setAttribute()` |
+| **session** | 같은 사용자 브라우저 유지되는 동안 | `session.setAttribute()` |
+| **application** | 서버 전체(모든 사용자 공유) | `application.setAttribute()` |
+
+> ⚠ 각 범위는 넓은 순서대로: page < request < session < application

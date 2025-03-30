@@ -34,7 +34,53 @@
 |-------|---------------------------|
 | catch | 예외 처리에 사용                 |
 | out   | 변수나 표현식의 결과를 HTML 출력에 쓸 때 |
+---
+### 1. `<c:forEach>` – 반복문
+리스트, 배열, 범위 등 반복 출력할 때 사용
+```
+<c:forEach var="item" items="${list}" varStatus="status">
+   ${status.index} : ${item}
+</c:forEach>
+```
+### 주요 속성
+| 속성                     | 설명                       |
+|------------------------|--------------------------|
+| `var`                  | 각 반복 요소를 저장할 변수          |
+| `items`                | 반복할 컬렉션 (List, 배열 등)     |
+| `varStatus`            | 루프 상태 정보를 담는 객체          |
+| `begin`, `end`, `step` | 정수 범위 지정 시 사용 (0부터 시작 등) |
 
+`varStatus` 속성 사용 예
+
+| 속성      | 설명             |
+|---------|----------------|
+| `index` | 0부터 시작하는 인덱스   |
+| `count` | 1부터 시작하는 반복 횟수 |
+| `first` | 첫 번째 반복이면 true |
+| `last`  | 마지막 반복이면 true  |
+
+---
+
+### 2. `<c:if>` – 단일 조건 분기
+- `test` 속성에 조건식을 넣고, true일 때만 실행됩니다.
+- `else` 없음 → 다중 조건은 `<c:choose>` 사용
+```
+<c:if test="${user.age >= 20}">
+   성인입니다.
+</c:if>
+```
+---
+### 3. `<c:choose>`, `<c:when>`, `<c:otherwise>` – 다중 조건 (if-else if-else)
+```
+<c:choose>
+   <c:when test="${user.grade == 'A'}">우수</c:when>
+   <c:when test="${user.grade == 'B'}">보통</c:when>
+   <c:otherwise>재시험</c:otherwise>
+</c:choose>
+```
+- `<c:when>`은 여러 개 가능
+- `<c:otherwise>`는 마지막 기본값
+---
 ```java
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>

@@ -4,6 +4,22 @@
 : JSP 내에서 데이터를 다룰 때, 사용되는 scripting language
 - `<% %>` 보다 속성값을 쉽게 출력 하기 위함 ⇒ `${}`
 - `${}`: 변수, 속성, 메서드 호출 등 포함 O
+
+### EL(Expression Language) 표현식 문법
+EL은 JSP에서 자바 코드 없이 값을 표현하기 위한 언어.
+### 기본 문법
+```
+${user.name}      // user.getName()
+${param.id}       // request.getParameter("id")
+${sessionScope.user}
+```
+### 주요 객체 단축 표현
+| EL 표현                 | 설명                          |
+|-----------------------|-----------------------------|
+| `${param.xxx}`        | request.getParameter("xxx") |
+| `${header.xxx}`       | request.getHeader("xxx")    |
+| `${cookie.xxx.value}` | 특정 이름의 쿠키 값                 |
+| `${sessionScope.xxx}` | 세션 스코프 객체                   |
 ---
 ## JavaBeans
 

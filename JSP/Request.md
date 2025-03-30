@@ -24,3 +24,12 @@ dispatcher.forward(request, response);
 ```java
 response.sendRedirect("location");
 ```
+---
+### forward vs redirect
+
+| 항목     | forward   | redirect         |
+|--------|-----------|------------------|
+| 동작 방식  | 서버 내부 이동  | 클라이언트가 새 요청      |
+| URL 변경 | ❌ 안 바뀜    | ✅ 바뀜             |
+| 요청 객체  | 유지됨       | 새 요청이므로 사라짐      |
+| 사용 예시  | 내부 JSP 이동 | 로그인 후 메인 페이지로 이동 |
