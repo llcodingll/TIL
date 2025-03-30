@@ -11,6 +11,8 @@
   - row(record)
   - PK
 #### SQL
+#### SQL 실행 순서
+> 기억 순서: FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY
 
 
 : 데이터 조장 && 데이터 정의
@@ -44,6 +46,16 @@
 - `CREATE TABLE tableName`: table 생성
   - 컬럼명, 데이터 타입 지정, 제약 조건 추가
 - `DESCRIBE|DESC tableName`: 생성된 table schema 확인
+
+### DDL 문법 (데이터 정의어)
+#### 주요 명령어
+| 명령어        | 설명                      |
+|------------|-------------------------|
+| `CREATE`   | DB, 테이블, 인덱스 등 생성       |
+| `DROP`     | 객체 삭제                   |
+| `ALTER`    | 기존 구조 변경                |
+| `TRUNCATE` | 테이블 비우기 (DML처럼 보여도 DDL) |
+
 ---
 ### Constraint(제약 조건)
 - 컬럼에 저장될 데이터 조건
@@ -58,6 +70,14 @@
 | FOREIGN KEY | 특정 테이블의 PK 컬럼에 저장된 값만 저장<br/>참조키=외래키<br/>NULL 값 허용<br/>어떤 컬럼에 어떤 데이터 참조하는지 지정 |
 | DEFAULT     | record 입력 시, 해당 열의 값이 입력되지 않으면 넣어줄 값 지정                                       |
 | CHECK       | 값의 범위/종류 지정<br/>MYSQL 8부터 사용 가능                                               |
+
+#### 외래키 제약 조건 (FOREIGN KEY)
+- 개념
+  - 한 테이블의 컬럼이 **다른 테이블의 기본키를 참조**하는 관계
+  - 데이터 무결성 유지: 존재하지 않는 키 참조 못 함
+- 주의사항 
+  - 참조되는 테이블의 컬럼은 **기본키 또는 유니크 제약조건 필요**
+  - 참조 컬럼 타입이 정확히 일치해야 함
 ---
 ## DML(Data Manipulation Language)
 ### INSERT
