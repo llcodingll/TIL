@@ -28,3 +28,33 @@
 | long getCreationTime()                       | session이 만들어진 시간 반환                           |
 | void removeAttribute(String name)            | session에서 지정한 이름의 객체 제거                       |
 | Enumeration getAttributeNames()              | session에서 모든 객체 이름을 Enumeration형으로 반환         |
+
+```java
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%
+	String id = request.getParameter("id");
+	String password = request.getParameter("password");
+	
+	//ID, PW를 이용해 DB에서 해당 유저 있는지 검사
+	//(현재) Manager로 메모리 통해 관리하고 있지 X
+	if(id.equals("user1") && password.equals("1234")){
+		//로그인 성공
+		HttpSession session1 = request.getSession(); // 자체적으로 반환 타입 있으면 그거 가져와서 쓸 수 있게 해준다
+		//session1이 아닌 session이면 컴파일에러남
+		//session은 이미 jsp에 기본 객체가 있음 그러니까 쓸 수 없음
+		session.setAttribute("loginUser", "유user2"); //id, nickname 저장
+		
+		//페이지 이동 : main.jsp로
+		//1. forwarding 방식
+		// request.getRequestDispatcher("08_Main.jsp").forward(request, response);
+		//2. redirect(권장) => 어떤 차이가 있는지 알고 쓸 것
+		response.sendRedirect("08_Main.jsp"); //새로고침 열심히 해도 문제 발생 X
+	} else {
+		//로그인 실패
+		response.sendRedirect("07_LoginForm.jsp");
+	}
+	
+%>
+```
