@@ -1,0 +1,12 @@
+## Spring Boot
+### @SpringBootApplication
+
+
+: @Configuration + @EnableAutoConfiguration + @ComponentScan
+```properties
+server.port=8080
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/dbName?serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=1234
+```
